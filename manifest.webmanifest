@@ -1,0 +1,18 @@
+{
+  "name": "MICK G — The Ballincollig Files",
+  "short_name": "Mick G",
+  "description": "Gangster-noir street app with a live shooting range, cemetery, audio, and music controls.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090909",
+  "theme_color": "#090909",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
