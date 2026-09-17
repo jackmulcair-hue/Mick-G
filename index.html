@@ -12,7 +12,7 @@
   <style>
     :root {
       --bg: #050505;
-      --panel: rgba(19, 18, 17, 0.9);
+      --panel: rgba(19, 18, 17, 0.92);
       --panel-alt: #12110f;
       --gold: #d7ae4d;
       --gold-2: #b88b2b;
@@ -23,6 +23,7 @@
       --danger: #d55a46;
       --green: #7cc97c;
       --line: rgba(157, 127, 48, 0.45);
+      --shadow: rgba(0,0,0,0.45);
     }
 
     * { box-sizing: border-box; }
@@ -36,19 +37,38 @@
     body {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 20% 10%, rgba(169, 119, 28, 0.18), transparent 20%),
-        radial-gradient(circle at 75% 30%, rgba(76, 64, 34, 0.2), transparent 25%),
+        radial-gradient(circle at 20% 10%, rgba(169, 119, 28, 0.16), transparent 18%),
+        radial-gradient(circle at 78% 24%, rgba(98, 82, 54, 0.22), transparent 26%),
         linear-gradient(#090909, #040404);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(255,255,255,0.02),
+          rgba(255,255,255,0.02) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+      opacity: 0.18;
     }
 
     .app {
       max-width: 560px;
       min-height: 100vh;
       margin: 0 auto;
-      background: linear-gradient(180deg, rgba(18, 16, 13, 0.98), rgba(7, 7, 7, 1));
-      padding-bottom: 90px;
+      background: linear-gradient(180deg, rgba(16, 15, 13, 0.98), rgba(7, 7, 7, 1));
+      padding-bottom: 96px;
       position: relative;
       overflow-x: hidden;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.02), 0 28px 50px rgba(0,0,0,0.42);
     }
 
     header {
@@ -58,7 +78,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 18px 14px;
+      padding: 18px 18px 14px;
       background: rgba(10, 10, 10, 0.82);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
@@ -92,14 +112,12 @@
       text-transform: uppercase;
       color: var(--gold-soft);
       background: rgba(36, 29, 17, 0.75);
+      box-shadow: inset 0 0 18px rgba(215,174,77,0.08);
     }
 
     main { padding: 15px; }
 
-    .screen {
-      display: none;
-    }
-
+    .screen { display: none; }
     .screen.active {
       display: block;
       animation: fadeIn 180ms ease-out;
@@ -111,12 +129,12 @@
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(23, 22, 20, 0.95), rgba(11, 11, 11, 0.96));
+      background: linear-gradient(180deg, rgba(23, 22, 20, 0.96), rgba(11, 11, 11, 0.97));
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 16px;
       margin-bottom: 14px;
-      box-shadow: 0 18px 30px rgba(0, 0, 0, 0.28);
+      box-shadow: 0 18px 28px rgba(0,0,0,0.25), inset 0 0 0 1px rgba(255,255,255,0.02);
       position: relative;
       overflow: hidden;
     }
@@ -127,20 +145,22 @@
       inset: 0 auto auto 0;
       width: 100%;
       height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(215, 174, 77, 0.7), transparent);
+      background: linear-gradient(90deg, transparent, rgba(215, 174, 77, 0.75), transparent);
     }
 
     .hero {
-      min-height: 220px;
+      min-height: 240px;
       display: flex;
       align-items: flex-end;
       background:
-        radial-gradient(circle at 72% 18%, rgba(190, 150, 62, 0.28), transparent 25%),
-        linear-gradient(125deg, rgba(42, 30, 9, 0.85), rgba(8, 8, 8, 0.97) 55%, rgba(10, 10, 10, 1));
+        radial-gradient(circle at 70% 14%, rgba(226, 176, 76, 0.28), transparent 18%),
+        radial-gradient(circle at 74% 60%, rgba(255,255,255,0.04), transparent 18%),
+        linear-gradient(130deg, rgba(56, 40, 13, 0.8), rgba(10,10,10,0.98) 46%, rgba(6,6,6,1));
       border-radius: 20px;
       padding: 20px;
       position: relative;
       overflow: hidden;
+      isolation: isolate;
     }
 
     .hero::before {
@@ -148,8 +168,21 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%),
-        repeating-linear-gradient(90deg, transparent 0 54px, rgba(255,255,255,0.03) 55px 56px);
+        linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.45) 100%),
+        repeating-linear-gradient(90deg, transparent 0 54px, rgba(255,255,255,0.025) 55px 56px);
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 18% 10% auto auto;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 68%);
+      box-shadow: 0 0 50px rgba(215,174,77,0.1);
+      z-index: 0;
     }
 
     .hero > * { position: relative; z-index: 1; }
@@ -163,12 +196,13 @@
     }
 
     .quote {
-      font-size: clamp(1.8rem, 5vw, 2.6rem);
-      line-height: 1.06;
+      font-size: clamp(1.8rem, 5vw, 2.7rem);
+      line-height: 1.02;
       margin: 0;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      max-width: 320px;
+      font-weight: 950;
+      letter-spacing: -0.05em;
+      max-width: 340px;
+      text-shadow: 0 0 16px rgba(215,174,77,0.12);
     }
 
     .muted {
@@ -281,9 +315,32 @@
       background: linear-gradient(180deg, rgba(215, 174, 77, 0.08), transparent);
     }
 
-    .range { position: relative; height: 382px; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(180deg, rgba(18, 27, 35, 1), rgba(97, 110, 120, 0.85) 52%, rgba(30, 26, 17, 1)); box-shadow: inset 0 0 0 2px rgba(255,255,255,0.03); }
-    .range::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 62px, rgba(255,255,255,0.04) 63px 64px); pointer-events: none; }
-    .range::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.2)); pointer-events: none; }
+    .range {
+      position: relative;
+      height: 382px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(18, 27, 35, 1), rgba(97, 110, 120, 0.88) 52%, rgba(30, 26, 17, 1));
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.03), 0 18px 26px rgba(0,0,0,0.28);
+    }
+
+    .range::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(90deg, transparent 0 62px, rgba(255,255,255,0.04) 63px 64px);
+      pointer-events: none;
+    }
+
+    .range::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.22));
+      pointer-events: none;
+    }
 
     .target {
       position: absolute;
@@ -292,7 +349,7 @@
       height: 136px;
       border-radius: 48% 48% 22% 22%;
       background:
-        linear-gradient(180deg, rgba(214, 202, 175, 0.9), rgba(198, 172, 126, 0.9)),
+        linear-gradient(180deg, rgba(214, 202, 175, 0.96), rgba(198, 172, 126, 0.92)),
         radial-gradient(circle at 50% 35%, rgba(255,255,255,0.4), transparent 35%);
       border: 2px solid rgba(33, 28, 22, 0.75);
       box-shadow: 0 10px 0 rgba(78, 71, 63, 0.9);
@@ -364,7 +421,7 @@
       border-radius: 50%;
       pointer-events: none;
       display: none;
-      background: radial-gradient(circle, rgba(255, 230, 160, 1) 0%, rgba(255, 196, 70, 0.7) 20%, rgba(255, 130, 50, 0.15) 55%, rgba(255, 130, 50, 0) 70%);
+      background: radial-gradient(circle, rgba(255, 230, 160, 1) 0%, rgba(255, 196, 70, 0.72) 20%, rgba(255, 130, 50, 0.18) 55%, rgba(255, 130, 50, 0) 70%);
       box-shadow: 0 0 30px rgba(255, 193, 79, 0.7);
     }
 
@@ -415,7 +472,7 @@
 
     .range-stat .value {
       font-weight: 900;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--gold-soft);
     }
 
@@ -482,7 +539,7 @@
       right: -20%;
       bottom: -8px;
       height: 60px;
-      background: linear-gradient(180deg, rgba(230,230,230,0.2), rgba(230,230,230,0.64), rgba(230,230,230,0.08));
+      background: linear-gradient(180deg, rgba(230,230,230,0.18), rgba(230,230,230,0.7), rgba(230,230,230,0.08));
       filter: blur(18px);
       animation: fogDrift 5s ease-in-out infinite alternate;
       opacity: 0.6;
@@ -500,7 +557,7 @@
       display: none;
       align-items: center;
       justify-content: center;
-      background: rgba(0,0,0,0.65);
+      background: rgba(0,0,0,0.68);
       backdrop-filter: blur(2px);
     }
 
@@ -518,12 +575,15 @@
       text-align: center;
       animation: reaperReveal 1.2s cubic-bezier(.18,.9,.22,1);
       transform-origin: center;
+      position: relative;
     }
 
     .reaper-figure .emoji {
       font-size: clamp(5rem, 16vw, 11rem);
       display: block;
       filter: drop-shadow(0 0 24px rgba(255,255,255,0.18));
+      position: relative;
+      z-index: 1;
     }
 
     .reaper-figure .title {
@@ -533,6 +593,21 @@
       font-weight: 900;
       font-size: 0.8rem;
       color: #f4d879;
+      position: relative;
+      z-index: 1;
+    }
+
+    .reaper-figure::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -48%);
+      filter: blur(12px);
     }
 
     @keyframes reaperReveal {
@@ -837,17 +912,19 @@
       btn.addEventListener('click', () => showScreen(btn.dataset.screen));
     });
 
-    // status values
     const respectStat = document.getElementById('respectStat');
     const loyaltyStat = document.getElementById('loyaltyStat');
     const disciplineStat = document.getElementById('disciplineStat');
     const scoreEl = document.getElementById('score');
     const streakEl = document.getElementById('streak');
     const heatEl = document.getElementById('heat');
+    const weaponEl = document.getElementById('weapon');
 
     let score = 0;
     let streak = 0;
     let level = 0;
+    const weapons = ['Glock', 'Browning', 'Tommy', 'Rook'];
+    let currentWeapon = 0;
 
     function updateStats() {
       scoreEl.textContent = score;
@@ -856,9 +933,9 @@
       loyaltyStat.textContent = Math.max(50, 100 - Math.min(35, level * 3));
       disciplineStat.textContent = Math.max(55, 100 - Math.min(30, level * 2));
       heatEl.textContent = score > 8 ? 'Rising' : score > 3 ? 'Watchful' : 'Low';
+      weaponEl.textContent = weapons[currentWeapon % weapons.length];
     }
 
-    // Range logic
     const stage = document.getElementById('rangeStage');
     const target = document.getElementById('target');
     const muzzle = document.getElementById('muzzle');
@@ -885,6 +962,7 @@
       score = 0;
       streak = 0;
       level = 0;
+      currentWeapon = 0;
       updateStats();
       spawnTarget();
       toast('Range reset');
@@ -934,6 +1012,8 @@
       const y = rect.height * (0.4 + (Math.random() - 0.5) * 0.25);
       showMuzzle(x, y);
       playGunSound();
+      currentWeapon = (currentWeapon + 1) % weapons.length;
+      updateStats();
 
       const targetRect = target.getBoundingClientRect();
       const hit =
@@ -987,22 +1067,21 @@
     spawnTarget();
     updateStats();
 
-    // Music controls
     const playlistEl = document.getElementById('playlist');
     const player = document.getElementById('streamPlayer');
     const tracks = [
-      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'
+      { name: 'Night Drift', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
+      { name: 'Street Echo', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+      { name: 'Last Light', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' }
     ];
 
     let currentTrack = 0;
 
     function renderPlaylist() {
       playlistEl.innerHTML = '';
-      tracks.forEach((url, index) => {
+      tracks.forEach((track, index) => {
         const li = document.createElement('li');
-        li.textContent = `Track ${index + 1}`;
+        li.innerHTML = `<span>${track.name}</span><span class="status">${index === currentTrack ? 'Live' : 'Queued'}</span>`;
         li.addEventListener('click', () => loadTrack(index));
         if (index === currentTrack) li.classList.add('active');
         playlistEl.appendChild(li);
@@ -1011,11 +1090,11 @@
 
     function loadTrack(index) {
       currentTrack = index;
-      player.src = tracks[currentTrack];
+      player.src = tracks[currentTrack].url;
       player.load();
       player.play();
       renderPlaylist();
-      toast(`Track ${currentTrack + 1} playing`);
+      toast(`${tracks[currentTrack].name} playing`);
     }
 
     function nextTrack() {
@@ -1048,10 +1127,9 @@
     }
 
     renderPlaylist();
-    player.src = tracks[0];
+    player.src = tracks[0].url;
     player.load();
 
-    // PWA install
     let deferredPrompt = null;
     const installButton = document.getElementById('installButton');
 
