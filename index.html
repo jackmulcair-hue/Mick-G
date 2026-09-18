@@ -6,24 +6,27 @@
   <meta name="theme-color" content="#090909" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="Mick G — The Ballincollig Files. A moody fictional nightlife and street-runner PWA." />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="icons/icon.svg" />
   <title>MICK G — The Ballincollig Files</title>
   <style>
     :root {
-      --bg: #040404;
-      --panel: rgba(20, 18, 15, 0.96);
-      --panel-2: rgba(13, 13, 13, 0.96);
+      --bg: #070707;
+      --bg-2: #12100d;
+      --panel: rgba(24, 21, 17, 0.96);
+      --panel-2: rgba(15, 14, 14, 0.96);
       --gold: #d7ae4d;
       --gold-2: #b88b2b;
-      --gold-soft: #f2d590;
-      --text: #efe6d2;
-      --muted: #b8aa84;
+      --gold-soft: #f3d98d;
+      --text: #f5ebd8;
+      --muted: #c7b99c;
       --danger: #d55a46;
       --green: #7cc97c;
       --blue: #5bb3ff;
-      --line: rgba(215, 174, 77, 0.45);
-      --shadow: rgba(0,0,0,0.45);
+      --line: rgba(215, 174, 77, 0.42);
+      --shadow: rgba(0,0,0,0.52);
+      --glow: rgba(215, 174, 77, 0.12);
     }
 
     * { box-sizing: border-box; }
@@ -32,15 +35,15 @@
       margin: 0;
       background: #050505;
       color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     body {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 18% 8%, rgba(200, 151, 44, 0.16), transparent 18%),
-        radial-gradient(circle at 80% 18%, rgba(92, 75, 45, 0.22), transparent 28%),
-        linear-gradient(#090909, #040404);
+        radial-gradient(circle at 18% 8%, rgba(200, 151, 44, 0.18), transparent 18%),
+        radial-gradient(circle at 82% 18%, rgba(86, 73, 38, 0.22), transparent 28%),
+        linear-gradient(180deg, #0b0b0b 0%, #050505 100%);
       overflow-x: hidden;
     }
 
@@ -51,12 +54,12 @@
       pointer-events: none;
       background: repeating-linear-gradient(
         0deg,
-        rgba(255,255,255,0.02),
-        rgba(255,255,255,0.02) 1px,
+        rgba(255,255,255,0.025),
+        rgba(255,255,255,0.025) 1px,
         transparent 1px,
         transparent 4px
       );
-      opacity: 0.16;
+      opacity: 0.18;
     }
 
     .app {
@@ -67,7 +70,7 @@
       padding-bottom: 92px;
       position: relative;
       overflow-x: hidden;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.02), 0 30px 54px rgba(0,0,0,0.45);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.02), 0 30px 54px rgba(0,0,0,0.48);
     }
 
     header {
@@ -77,7 +80,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 18px 14px;
+      padding: 16px 18px 14px;
       background: rgba(10, 10, 10, 0.82);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
@@ -105,7 +108,7 @@
       display: inline-block;
       border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 5px 9px;
+      padding: 6px 10px;
       font-size: 10px;
       letter-spacing: 1.2px;
       text-transform: uppercase;
@@ -148,13 +151,13 @@
     }
 
     .hero {
-      min-height: 240px;
+      min-height: 260px;
       display: flex;
       align-items: flex-end;
       background:
-        radial-gradient(circle at 70% 14%, rgba(226, 176, 76, 0.32), transparent 18%),
-        radial-gradient(circle at 74% 60%, rgba(255,255,255,0.04), transparent 18%),
-        linear-gradient(130deg, rgba(56, 40, 13, 0.8), rgba(10,10,10,0.98) 46%, rgba(6,6,6,1));
+        radial-gradient(circle at 78% 12%, rgba(226, 176, 76, 0.30), transparent 18%),
+        radial-gradient(circle at 76% 62%, rgba(255,255,255,0.05), transparent 15%),
+        linear-gradient(130deg, rgba(49, 34, 13, 0.9), rgba(10,10,10,0.98) 46%, rgba(5,5,5,1));
       border-radius: 20px;
       padding: 20px;
       position: relative;
@@ -168,7 +171,7 @@
       inset: 0;
       background:
         linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.5) 100%),
-        repeating-linear-gradient(90deg, transparent 0 54px, rgba(255,255,255,0.025) 55px 56px);
+        repeating-linear-gradient(90deg, transparent 0 52px, rgba(255,255,255,0.02) 53px 54px);
       z-index: 0;
     }
 
@@ -191,7 +194,7 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--gold-soft);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .quote {
@@ -200,7 +203,7 @@
       margin: 0;
       font-weight: 950;
       letter-spacing: -0.05em;
-      max-width: 340px;
+      max-width: 360px;
       text-shadow: 0 0 16px rgba(215,174,77,0.12);
       opacity: 1;
       transition: opacity 220ms ease, transform 220ms ease;
@@ -213,14 +216,14 @@
 
     .muted {
       color: var(--muted);
-      line-height: 1.55;
+      line-height: 1.6;
       font-size: 12px;
       margin: 0;
     }
 
     h2 {
       margin: 0 0 12px;
-      font-size: 1.05rem;
+      font-size: 1.04rem;
       letter-spacing: 0.07em;
       text-transform: uppercase;
       color: #f2dca3;
@@ -237,7 +240,7 @@
       appearance: none;
       border: 0;
       border-radius: 12px;
-      background: linear-gradient(180deg, #d9b55d, #b88b2b);
+      background: linear-gradient(180deg, #e0bf67, #b88b2b);
       color: #0d0d0d;
       font-weight: 900;
       font-size: 0.88rem;
@@ -275,6 +278,27 @@
       box-shadow: 0 0 0 3px rgba(215, 174, 77, 0.14);
     }
 
+    .meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(27, 24, 20, 0.8);
+      padding: 8px 10px;
+      color: var(--gold-soft);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
     .stat {
       display: flex;
       justify-content: space-between;
@@ -299,7 +323,11 @@
       background: rgba(17, 17, 17, 0.75);
       border: 1px solid rgba(130,100,42,0.45);
       border-radius: 12px;
-      padding: 10px 12px;
+      padding: 12px;
+      min-height: 84px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .metric-box .label {
@@ -804,7 +832,12 @@
           <div>
             <div class="kicker">Ballincollig's rising don</div>
             <p class="quote" id="quote">“Move with purpose. Keep your word. Look after your people.”</p>
-            <div class="muted" id="by">— Mick's fictional street wisdom</div>
+            <div class="muted" id="by" style="margin-top: 8px;">— Mick's fictional street wisdom</div>
+            <div class="meta-strip">
+              <span class="meta-pill">City status</span>
+              <span class="meta-pill">Low heat</span>
+              <span class="meta-pill">Fresh ledger</span>
+            </div>
           </div>
         </div>
 
@@ -999,399 +1032,226 @@
     }
 
     function newQuote() {
-      currentQuoteIndex = (currentQuoteIndex + 1 + Math.floor(Math.random() * (quotes.length - 1))) % quotes.length;
+      currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
       setQuote(currentQuoteIndex);
       toast('Fresh line loaded');
     }
 
-    function cycleQuotes() {
-      currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
-      setQuote(currentQuoteIndex);
-    }
-
-    setQuote(0);
-    setInterval(cycleQuotes, 3800);
-
-    function toast(msg) {
+    function toast(message) {
       const box = document.getElementById('toastBox');
-      box.textContent = msg;
+      box.textContent = message;
       box.classList.add('show');
-      clearTimeout(toast._timer);
-      toast._timer = setTimeout(() => box.classList.remove('show'), 1600);
-    }
-
-    function showScreen(name) {
-      document.querySelectorAll('.screen').forEach(s => s.classList.toggle('active', s.id === name));
-      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.screen === name));
-    }
-
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-      btn.addEventListener('click', () => showScreen(btn.dataset.screen));
-    });
-
-    const game = {
-      cash: 3200,
-      respect: 74,
-      loyalty: 82,
-      discipline: 78,
-      territory: 1,
-      heat: 18,
-      score: 0,
-      streak: 0,
-      round: 1,
-      weaponIndex: 0,
-      investmentPot: 3,
-      signalMarkers: 12,
-      associates: 12,
-      cityStatus: 'Quiet',
-      rivalPressure: 'Low'
-    };
-
-    const weapons = [
-      { name: 'Glock', payout: 26 },
-      { name: 'Browning', payout: 34 },
-      { name: 'Tommy', payout: 50 },
-      { name: 'Rook', payout: 68 }
-    ];
-
-    const targetTypes = {
-      runner: { label: 'Runner', value: 10, health: 1 },
-      lookout: { label: 'Lookout', value: 20, health: 1 },
-      enforcer: { label: 'Enforcer', value: 35, health: 1 },
-      snitch: { label: 'Snitch', value: 28, health: 1 },
-      boss: { label: 'Boss', value: 70, health: 1 }
-    };
-
-    const respectStat = document.getElementById('respectStat');
-    const loyaltyStat = document.getElementById('loyaltyStat');
-    const disciplineStat = document.getElementById('disciplineStat');
-    const territoryStat = document.getElementById('territoryStat');
-    const scoreEl = document.getElementById('score');
-    const streakEl = document.getElementById('streak');
-    const heatEl = document.getElementById('heat');
-    const weaponEl = document.getElementById('weapon');
-    const roundBadge = document.getElementById('roundBadge');
-    const targetTypeBadge = document.getElementById('targetTypeBadge');
-    const cityStatusEl = document.getElementById('cityStatus');
-    const cashValueEl = document.getElementById('cashValue');
-    const stashCashEl = document.getElementById('stashCash');
-    const investmentPotEl = document.getElementById('investmentPot');
-    const signalMarkersEl = document.getElementById('signalMarkers');
-    const rivalPressureEl = document.getElementById('rivalPressure');
-    const trafficStatusEl = document.getElementById('trafficStatus');
-    const weatherStatusEl = document.getElementById('weatherStatus');
-    const radioStatusEl = document.getElementById('radioStatus');
-    const associateCountEl = document.getElementById('associateCount');
-    const watchStatusEl = document.getElementById('watchStatus');
-    const headerBadge = document.getElementById('headerBadge');
-
-    function formatMoney(value) {
-      return `€${(value || 0).toLocaleString()}`;
-    }
-
-    function updateHud() {
-      respectStat.textContent = Math.max(40, Math.min(99, game.respect));
-      loyaltyStat.textContent = Math.max(40, Math.min(99, game.loyalty));
-      disciplineStat.textContent = Math.max(45, Math.min(99, game.discipline));
-      territoryStat.textContent = game.territory;
-      scoreEl.textContent = game.score;
-      streakEl.textContent = game.streak;
-      heatEl.textContent = game.heat > 60 ? 'Rising' : game.heat > 28 ? 'Watchful' : 'Low';
-      weaponEl.textContent = weapons[game.weaponIndex % weapons.length].name;
-      roundBadge.textContent = `Round ${game.round}`;
-      cityStatusEl.textContent = game.cityStatus;
-      cashValueEl.textContent = formatMoney(game.cash);
-      stashCashEl.textContent = formatMoney(game.cash);
-      investmentPotEl.textContent = game.investmentPot;
-      signalMarkersEl.textContent = game.signalMarkers;
-      rivalPressureEl.textContent = game.rivalPressure;
-      trafficStatusEl.textContent = game.heat > 50 ? 'Heavy' : 'Light';
-      weatherStatusEl.textContent = game.heat > 40 ? 'Storm' : 'Fog';
-      radioStatusEl.textContent = game.heat > 40 ? 'Static / active' : 'Static / clear';
-      associateCountEl.textContent = game.associates;
-      watchStatusEl.textContent = game.cityStatus === 'Quiet' ? 'On' : 'Alert';
-      headerBadge.textContent = game.heat > 50 ? 'Heat up' : game.cityStatus === 'Quiet' ? 'Night Shift' : 'Pressure';
-    }
-
-    const stage = document.getElementById('rangeStage');
-    const target = document.getElementById('target');
-    const muzzle = document.getElementById('muzzle');
-    let targetAlive = true;
-    let moveTimer = null;
-
-    function randomTargetType() {
-      const roll = Math.random();
-      if (game.round >= 4 && roll > 0.82) return 'boss';
-      if (roll > 0.72) return 'enforcer';
-      if (roll > 0.43) return 'lookout';
-      if (roll > 0.18) return 'snitch';
-      return 'runner';
-    }
-
-    function spawnTarget(type = randomTargetType()) {
-      target.classList.remove('dead');
-      target.classList.remove('hit');
-      target.classList.remove('runner', 'lookout', 'enforcer', 'snitch', 'boss');
-      target.classList.add(type);
-      targetAlive = true;
-      targetTypeBadge.textContent = targetTypes[type].label;
-      target.textContent = targetTypes[type].label;
-
-      const stageRect = stage.getBoundingClientRect();
-      const padding = 18;
-      const left = padding + Math.random() * (stageRect.width - padding * 2 - 100);
-      const top = 48 + Math.random() * (stageRect.height - 110);
-      target.style.left = `${left}px`;
-      target.style.top = `${top}px`;
-    }
-
-    function resetRange() {
-      game.score = 0;
-      game.streak = 0;
-      game.round = 1;
-      game.weaponIndex = 0;
-      game.heat = 18;
-      updateHud();
-      spawnTarget();
-      toast('Range reset');
-    }
-
-    function moveTarget() {
-      if (!targetAlive) return;
-      spawnTarget();
-    }
-
-    function startRangeMotion() {
-      clearInterval(moveTimer);
-      moveTimer = setInterval(moveTarget, Math.max(680, 1500 - game.round * 80));
-    }
-
-    function showMuzzle(x, y) {
-      muzzle.style.left = `${x}px`;
-      muzzle.style.top = `${y}px`;
-      muzzle.classList.remove('flash');
-      void muzzle.offsetWidth;
-      muzzle.classList.add('flash');
-      setTimeout(() => muzzle.classList.remove('flash'), 120);
-    }
-
-    function playGunSound() {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-
-      const ctx = new AudioCtx();
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(120, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(42, ctx.currentTime + 0.09);
-      gain.gain.setValueAtTime(0.001, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
-      osc.connect(gain).connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.12);
-    }
-
-    function awardCash(amount) {
-      game.cash += amount;
-      game.respect = Math.min(99, game.respect + 2);
-      game.loyalty = Math.min(99, game.loyalty + 1);
-      game.discipline = Math.min(99, game.discipline + 1);
-      game.heat = Math.min(100, game.heat + 5);
-      if (game.heat >= 70) {
-        game.cityStatus = 'Hot';
-        game.rivalPressure = 'High';
-      } else if (game.heat >= 40) {
-        game.cityStatus = 'Watchful';
-        game.rivalPressure = 'Medium';
-      } else {
-        game.cityStatus = 'Quiet';
-        game.rivalPressure = 'Low';
-      }
-      updateHud();
-    }
-
-    function hitTarget(type) {
-      const reward = targetTypes[type].value + weapons[game.weaponIndex % weapons.length].payout;
-      game.score += reward;
-      game.streak += 1;
-      game.cash += reward * 2;
-      game.heat = Math.min(100, game.heat + 4 + game.streak * 0.5);
-      if (game.streak > 0 && game.streak % 4 === 0) {
-        game.round += 1;
-        game.weaponIndex = Math.min(game.weaponIndex + 1, weapons.length - 1);
-        game.territory += 1;
-        game.associates += 1;
-        game.investmentPot += 1;
-        toast('Territory move secured');
-      }
-      if (game.heat >= 70) {
-        game.cityStatus = 'Hot';
-        game.rivalPressure = 'High';
-      } else if (game.heat >= 40) {
-        game.cityStatus = 'Watchful';
-        game.rivalPressure = 'Medium';
-      } else {
-        game.cityStatus = 'Quiet';
-        game.rivalPressure = 'Low';
-      }
-
-      target.classList.add('hit');
-      targetAlive = false;
-      target.classList.add('dead');
-      setTimeout(() => {
-        spawnTarget();
-      }, 180);
-      updateHud();
-      playGunSound();
-      showMuzzle(target.offsetLeft + target.offsetWidth / 2, target.offsetTop + target.offsetHeight / 2);
-    }
-
-    function fireShot() {
-      const stageRect = stage.getBoundingClientRect();
-      const targetCenterX = target.offsetLeft + target.offsetWidth / 2;
-      const targetCenterY = target.offsetTop + target.offsetHeight / 2;
-      const x = stageRect.left + targetCenterX;
-      const y = stageRect.top + targetCenterY;
-      showMuzzle(targetCenterX, targetCenterY);
-      playGunSound();
-      hitTarget(target.dataset.type || target.classList[1] || 'runner');
-    }
-
-    target.addEventListener('click', () => {
-      const type = target.classList.contains('boss') ? 'boss' :
-        target.classList.contains('enforcer') ? 'enforcer' :
-        target.classList.contains('lookout') ? 'lookout' :
-        target.classList.contains('snitch') ? 'snitch' : 'runner';
-      target.dataset.type = type;
-      hitTarget(type);
-    });
-
-    stage.addEventListener('click', (event) => {
-      if (!targetAlive) return;
-      const rect = stage.getBoundingClientRect();
-      const targetCenterX = target.offsetLeft + target.offsetWidth / 2;
-      const targetCenterY = target.offsetTop + target.offsetHeight / 2;
-      const clickX = event.clientX - rect.left;
-      const clickY = event.clientY - rect.top;
-      const hitDistance = Math.hypot(clickX - targetCenterX, clickY - targetCenterY);
-      const hitRadius = target.offsetWidth * 0.46;
-      if (hitDistance <= hitRadius) {
-        const type = target.dataset.type || target.classList[1] || 'runner';
-        hitTarget(type);
-      } else {
-        game.streak = 0;
-        game.heat = Math.min(100, game.heat + 3);
-        game.cityStatus = 'Watchful';
-        updateHud();
-        toast('Missed shot');
-      }
-    });
-
-    function makeSmartMove() {
-      const gain = 420 + (game.territory * 90);
-      game.cash += gain;
-      game.respect = Math.min(99, game.respect + 7);
-      game.loyalty = Math.min(99, game.loyalty + 4);
-      game.discipline = Math.min(99, game.discipline + 5);
-      game.signalMarkers += 2;
-      game.cityStatus = 'Quiet';
-      game.rivalPressure = 'Low';
-      updateHud();
-      toast(`Smart move paid €${gain.toLocaleString()}`);
+      clearTimeout(toast.timeout);
+      toast.timeout = setTimeout(() => box.classList.remove('show'), 1400);
     }
 
     function showReaper() {
       const overlay = document.getElementById('reaperOverlay');
       overlay.classList.add('show');
-      setTimeout(() => overlay.classList.remove('show'), 1100);
-      toast('The Reaper is on the line');
+      setTimeout(() => overlay.classList.remove('show'), 1400);
+      toast('The Reaper is in the room');
     }
 
-    const playlist = [
-      { title: 'Night Shift', mood: 'backstreets', src: '' },
-      { title: 'Territory Run', mood: 'fast lane', src: '' },
-      { title: 'Quiet Power', mood: 'low profile', src: '' }
-    ];
-
-    const streamPlayer = document.getElementById('streamPlayer');
-    const playlistEl = document.getElementById('playlist');
-    let currentTrackIndex = 0;
-
-    function renderPlaylist() {
-      playlistEl.innerHTML = '';
-      playlist.forEach((track, index) => {
-        const li = document.createElement('li');
-        li.textContent = `${track.title} • ${track.mood}`;
-        li.className = index === currentTrackIndex ? 'active' : '';
-        li.addEventListener('click', () => {
-          currentTrackIndex = index;
-          setTrack();
-        });
-        playlistEl.appendChild(li);
-      });
-    }
-
-    function setTrack() {
-      renderPlaylist();
-      const track = playlist[currentTrackIndex];
-      if (!track.src) {
-        streamPlayer.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
-      } else {
-        streamPlayer.src = track.src;
-      }
-      streamPlayer.load();
+    function makeSmartMove() {
+      const city = document.getElementById('cityStatus');
+      const stash = document.getElementById('stashCash');
+      const cash = Number(stash.textContent.replace(/[^\d]/g, '')) || 3200;
+      const next = cash + 520;
+      stash.textContent = '€' + next.toLocaleString();
+      city.textContent = 'Watching';
+      toast('Smart move paid off');
     }
 
     function toggleMusic() {
-      if (!streamPlayer.src) {
-        setTrack();
+      const player = document.getElementById('streamPlayer');
+      if (!player.src) {
+        toast('Drop in a local track to play');
+        return;
       }
-      if (streamPlayer.paused) {
-        streamPlayer.play().catch(() => {});
-        toast('City radio live');
-      } else {
-        streamPlayer.pause();
-        toast('Radio down');
-      }
+      if (player.paused) player.play();
+      else player.pause();
     }
 
     function pauseMusic() {
-      streamPlayer.pause();
-      toast('Paused');
+      const player = document.getElementById('streamPlayer');
+      if (!player.paused) player.pause();
+      toast('Music paused');
     }
 
     function nextTrack() {
-      currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
-      setTrack();
-      streamPlayer.play().catch(() => {});
-      toast(`Now playing: ${playlist[currentTrackIndex].title}`);
+      const list = document.querySelectorAll('.playlist li');
+      if (!list.length) {
+        toast('No tracks queued');
+        return;
+      }
+      const current = [...list].findIndex(li => li.classList.contains('active'));
+      const nextIndex = current >= 0 ? (current + 1) % list.length : 0;
+      const next = list[nextIndex];
+      next.click();
     }
 
     function loadLocalMusic(event) {
       const file = event.target.files[0];
       if (!file) return;
+      const player = document.getElementById('streamPlayer');
       const url = URL.createObjectURL(file);
-      playlist[currentTrackIndex].src = url;
-      playlist[currentTrackIndex].title = file.name.replace(/\.[^/.]+$/, '');
-      streamPlayer.src = url;
-      streamPlayer.load();
-      streamPlayer.play().catch(() => {});
-      renderPlaylist();
-      toast('Local track loaded');
+      player.src = url;
+      player.play();
+      toast('Loaded: ' + file.name);
     }
+
+    const playlist = document.getElementById('playlist');
+    const defaultTracks = [
+      'Midnight Circuit',
+      'Backstreet Glow',
+      'North End Drift',
+      'Glasshouse Afterhours'
+    ];
+
+    defaultTracks.forEach((track, index) => {
+      const li = document.createElement('li');
+      li.textContent = track;
+      if (index === 0) li.classList.add('active');
+      li.addEventListener('click', () => {
+        document.querySelectorAll('.playlist li').forEach(item => item.classList.remove('active'));
+        li.classList.add('active');
+        const player = document.getElementById('streamPlayer');
+        const station = ['https://cdn.pixabay.com/download/audio/2022/03/15/audio_5b53d01d2f.mp3?filename=night-ambience-114063.mp3',
+          'https://cdn.pixabay.com/download/audio/2022/01/18/audio_1a5f16cbaa.mp3?filename=lofi-study-112191.mp3',
+          'https://cdn.pixabay.com/download/audio/2022/02/06/audio_f4266d8bc0.mp3?filename=driving-ambience-110971.mp3',
+          'https://cdn.pixabay.com/download/audio/2021/09/15/audio_3d7379d2cf.mp3?filename=gentle-future-beat-118682.mp3'][index];
+        player.src = station;
+        player.play();
+        toast(track + ' playing');
+      });
+      playlist.appendChild(li);
+    });
+
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const screens = document.querySelectorAll('.screen');
+
+    navButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.screen;
+        navButtons.forEach(btn => btn.classList.toggle('active', btn === button));
+        screens.forEach(screen => screen.classList.toggle('active', screen.id === target));
+      });
+    });
+
+    const installButton = document.getElementById('installButton');
+    let deferredPrompt = null;
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      installButton.classList.add('show');
+    });
 
     function installApp() {
-      toast('Mick G installed');
+      if (!deferredPrompt) {
+        toast('This device may not support install prompts');
+        return;
+      }
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => {
+        deferredPrompt = null;
+        installButton.classList.remove('show');
+      });
     }
 
-    document.getElementById('musicFile').addEventListener('change', loadLocalMusic);
-    renderPlaylist();
-    setTrack();
-    updateHud();
-    spawnTarget();
-    startRangeMotion();
+    const target = document.getElementById('target');
+    const rangeStage = document.getElementById('rangeStage');
+    const muzzle = document.getElementById('muzzle');
+    let score = 0;
+    let streak = 0;
+    let round = 1;
+    let lastHit = false;
+
+    const targetTypes = ['Runner', 'Lookout', 'Enforcer', 'Snitch', 'Boss'];
+
+    function resetRange() {
+      score = 0;
+      streak = 0;
+      round = 1;
+      document.getElementById('score').textContent = score;
+      document.getElementById('streak').textContent = streak;
+      document.getElementById('roundBadge').textContent = 'Round ' + round;
+      target.classList.remove('dead');
+      target.classList.remove('hit');
+      target.classList.add('runner');
+      target.textContent = 'Runner';
+      document.getElementById('targetTypeBadge').textContent = 'Runner';
+      target.style.left = '50%';
+      target.style.top = '50%';
+      toast('Range reset');
+    }
+
+    function spawnTarget() {
+      const types = ['runner', 'lookout', 'enforcer', 'snitch', 'boss'];
+      const type = types[Math.floor(Math.random() * types.length)];
+      target.className = 'target ' + type;
+      target.textContent = targetTypes[types.indexOf(type)];
+      document.getElementById('targetTypeBadge').textContent = targetTypes[types.indexOf(type)];
+      const rect = rangeStage.getBoundingClientRect();
+      const x = 60 + Math.random() * (rect.width - 140);
+      const y = 60 + Math.random() * (rect.height - 160);
+      target.style.left = x + 'px';
+      target.style.top = y + 'px';
+    }
+
+    function fireShot() {
+      const rect = rangeStage.getBoundingClientRect();
+      const x = Math.random() * rect.width;
+      const y = Math.random() * rect.height;
+      muzzle.style.left = x + 'px';
+      muzzle.style.top = y + 'px';
+      muzzle.classList.add('flash');
+      setTimeout(() => muzzle.classList.remove('flash'), 120);
+
+      const targetRect = target.getBoundingClientRect();
+      const hit = x > targetRect.left && x < targetRect.right && y > targetRect.top && y < targetRect.bottom;
+      if (hit) {
+        target.classList.add('hit');
+        score += 10 + streak * 5;
+        streak += 1;
+        document.getElementById('score').textContent = score;
+        document.getElementById('streak').textContent = streak;
+        setTimeout(() => {
+          target.classList.remove('hit');
+          spawnTarget();
+        }, 180);
+      } else {
+        streak = 0;
+        document.getElementById('streak').textContent = streak;
+        toast('Missed clean');
+      }
+
+      if (streak > 0 && streak % 3 === 0) {
+        round += 1;
+        document.getElementById('roundBadge').textContent = 'Round ' + round;
+      }
+    }
+
+    target.addEventListener('click', () => {
+      target.classList.add('hit');
+      score += 15;
+      streak += 1;
+      document.getElementById('score').textContent = score;
+      document.getElementById('streak').textContent = streak;
+      setTimeout(() => {
+        target.classList.remove('hit');
+        spawnTarget();
+      }, 180);
+    });
+
+    function initRange() {
+      spawnTarget();
+      document.getElementById('score').textContent = score;
+      document.getElementById('streak').textContent = streak;
+      document.getElementById('weapon').textContent = 'Glock';
+    }
+
+    initRange();
   </script>
 </body>
 </html>
