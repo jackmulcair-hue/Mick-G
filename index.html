@@ -3,58 +3,145 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#08090d">
-  <meta name="description" content="Mick G: a fictional noir strategy game about timing, reputation and smart moves.">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="description" content="MICKY K — Ballincollig, Cork city criminal strategy game. Rise through Cork County by timing, nerve and violence." />
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon.svg">
   <link rel="stylesheet" href="styles.css">
-  <title>MICK G — The Ballincollig Files</title>
+  <title>MICKY K — Ballincollig, Cork</title>
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <div><span class="eyebrow">BALLINCOLLIG // NIGHT SHIFT</span><h1>MICK <em>G</em></h1></div>
-      <div class="header-stats"><span id="clock">22:00</span><span class="heat-dot" id="heatDot"></span><span id="heatLabel">LOW HEAT</span></div>
+      <div>
+        <span class="eyebrow">CORK COUNTY // BALLINCOLLIG</span>
+        <h1>MICKY <em>K</em></h1>
+      </div>
+      <div class="header-stats">
+        <span id="clock">22:00</span>
+        <span class="heat-dot" id="heatDot"></span>
+        <span id="heatLabel">LOW HEAT</span>
+      </div>
     </header>
+
     <main>
       <section class="hero panel">
-        <div><span class="eyebrow">THE NEXT MOVE</span><h2 id="headline">Build quietly. Move precisely.</h2><p id="flavour">Your name is only worth what the city remembers.</p></div>
-        <div class="rank-mark"><span>RANK</span><strong id="rank">1</strong><small id="rankName">UNKNOWN</small></div>
+        <div>
+          <span class="eyebrow">CITY MOTTO</span>
+          <h2 id="headline">Micky K......you can't kill a bad thing</h2>
+          <p id="flavour">Ballincollig to Cork city. One syndicate. No room for weakness.</p>
+        </div>
+        <div class="rank-mark">
+          <span>RANK</span>
+          <strong id="rank">1</strong>
+          <small id="rankName">UNKNOWN</small>
+        </div>
       </section>
+
       <section class="resource-grid">
         <div class="resource"><span>€ CASH</span><strong id="cash">1,250</strong><small id="cashDelta">Ready capital</small></div>
         <div class="resource"><span>✦ NOTORIETY</span><strong id="notoriety">0</strong><small>Next rank: <b id="nextRank">100</b></small></div>
         <div class="resource"><span>⌁ CREW</span><strong id="crew">2/5</strong><small id="crewText">2 available</small></div>
         <div class="resource"><span>◉ HEAT</span><strong id="heat">8</strong><small>Keep it below 80</small></div>
       </section>
+
       <div id="toast" class="toast" role="status"></div>
+
       <nav class="tabs" aria-label="Game areas">
-        <button class="tab active" data-view="street">Street</button><button class="tab" data-view="jobs">Jobs <b id="jobBadge">3</b></button><button class="tab" data-view="range">Range</button><button class="tab" data-view="ledger">Ledger</button>
+        <button class="tab active" data-view="street">Street</button>
+        <button class="tab" data-view="jobs">Jobs <b id="jobBadge">3</b></button>
+        <button class="tab" data-view="range">Range</button>
+        <button class="tab" data-view="ledger">Ledger</button>
       </nav>
+
       <section id="street" class="view active">
-        <div class="section-heading"><div><span class="eyebrow">LIVE CITY</span><h2>Choose your timing</h2></div><span class="pill" id="cityMood">QUIET NIGHT</span></div>
+        <div class="section-heading">
+          <div><span class="eyebrow">LIVE CITY</span><h2>Choose your timing</h2></div>
+          <span class="pill" id="cityMood">QUIET NIGHT</span>
+        </div>
         <div id="streetCards" class="card-grid"></div>
-        <div class="panel tutorial"><span class="eyebrow">HOW TO RISE</span><h2 id="tutorialTitle">Start with a low-risk run</h2><p id="tutorialText">Jobs have windows, requirements and consequences. Read the brief, assign the right crew, then let the clock do its work.</p><button class="button secondary" id="tutorialNext">Next lesson →</button></div>
+
+        <div class="panel tutorial">
+          <span class="eyebrow">HOW TO RISE</span>
+          <h2 id="tutorialTitle">Start in Ballincollig</h2>
+          <p id="tutorialText">Every move costs time and can ignite the city. Pick jobs at the right hour, build your crew and stay scarce on the street.</p>
+          <button class="button secondary" id="tutorialNext">Next lesson →</button>
+        </div>
       </section>
+
       <section id="jobs" class="view">
-        <div class="section-heading"><div><span class="eyebrow">OPERATIONS BOARD</span><h2>Timed opportunities</h2></div><span class="pill">NO SPAM RUNS</span></div>
-        <div class="panel notice">Every operation advances the clock. Crew, cash, heat and notoriety persist. Failed moves can close future routes.</div>
+        <div class="section-heading">
+          <div><span class="eyebrow">OPERATIONS BOARD</span><h2>Timed opportunities</h2></div>
+          <span class="pill">NO SPAM RUNS</span>
+        </div>
+        <div class="panel notice">You only gain by picking the right job at the right time. Every run consumes hours, crew and nerve.</div>
         <div id="jobList" class="job-list"></div>
       </section>
+
       <section id="range" class="view">
-        <div class="section-heading"><div><span class="eyebrow">TRAINING FACILITY</span><h2>Precision range</h2></div><span class="pill" id="ammoLabel">AMMO 6/6</span></div>
-        <div class="panel range-panel"><div class="range-hud"><span id="roundLabel">ROUND 1 / 5</span><span id="accuracyLabel">ACCURACY 0%</span></div><div id="rangeStage" class="range-stage"><div class="range-scan"></div><div id="target" class="target"><i></i><span id="targetLabel">TARGET</span></div><div id="hitMarker" class="hit-marker">+10</div></div><div class="range-controls"><button class="button" id="fireButton">Take the shot</button><button class="button secondary" id="reloadButton">Reload</button></div><div class="range-stats"><span>Score <b id="rangeScore">0</b></span><span>Streak <b id="rangeStreak">0</b></span><span>Best <b id="rangeBest">0</b></span></div></div>
-        <div class="panel upgrade-panel"><div><span class="eyebrow">KIT ROOM</span><h2>Upgrade your setup</h2><p>Spend earned cash on consistency, not shortcuts.</p></div><button class="button secondary" id="upgradeRange">Upgrade (€500)</button><span class="upgrade-level" id="rangeLevel">LEVEL 1</span></div>
+        <div class="section-heading">
+          <div><span class="eyebrow">TRAINING FACILITY</span><h2>Precision range</h2></div>
+          <span class="pill" id="ammoLabel">AMMO 6/6</span>
+        </div>
+
+        <div class="panel range-panel">
+          <div class="range-topbar">
+            <span id="roundLabel">ROUND 1 / 5</span>
+            <span id="accuracyLabel">ACCURACY 0%</span>
+          </div>
+
+          <div class="weapon-row" id="weaponRow"></div>
+
+          <div id="rangeStage" class="range-stage" aria-label="Range firing area">
+            <div class="range-scan"></div>
+            <div id="target" class="target"><i></i><span id="targetLabel">TARGET</span></div>
+            <div id="hitMarker" class="hit-marker">+10</div>
+          </div>
+
+          <div class="range-controls">
+            <button class="button" id="fireButton">Take the shot</button>
+            <button class="button secondary" id="reloadButton">Reload</button>
+            <button class="button secondary" id="musicToggle">Beat off</button>
+          </div>
+
+          <div class="range-stats">
+            <span>Score <b id="rangeScore">0</b></span>
+            <span>Streak <b id="rangeStreak">0</b></span>
+            <span>Best <b id="rangeBest">0</b></span>
+          </div>
+        </div>
+
+        <div class="panel upgrade-panel">
+          <div>
+            <span class="eyebrow">KIT ROOM</span>
+            <h2>Upgrade the kit</h2>
+            <p>Spend money on tighter control and stronger hardware, not just noise.</p>
+          </div>
+          <button class="button secondary" id="upgradeRange">Upgrade (€500)</button>
+          <span class="upgrade-level" id="rangeLevel">LEVEL 1</span>
+        </div>
       </section>
+
       <section id="ledger" class="view">
-        <div class="section-heading"><div><span class="eyebrow">CAREER FILE</span><h2>Reputation & records</h2></div></div>
-        <div class="panel progress-panel"><div class="progress-title"><span>Next rank: <b id="rankProgressName">Runner</b></span><span id="rankProgress">0 / 100</span></div><div class="progress"><i id="progressBar"></i></div><p id="rankHint">Complete clean jobs and train to earn notoriety.</p></div>
+        <div class="section-heading">
+          <div><span class="eyebrow">CAREER FILE</span><h2>Reputation & records</h2></div>
+        </div>
+        <div class="panel progress-panel">
+          <div class="progress-title"><span>Next rank: <b id="rankProgressName">Runner</b></span><span id="rankProgress">0 / 100</span></div>
+          <div class="progress"><i id="progressBar"></i></div>
+          <p id="rankHint">Complete clean jobs and train to earn notoriety.</p>
+        </div>
         <div class="panel"><span class="eyebrow">ACHIEVEMENTS</span><div id="achievements" class="achievement-list"></div></div>
         <div class="panel history-panel"><span class="eyebrow">RECENT MOVES</span><ol id="history"></ol></div>
       </section>
     </main>
-    <footer><span>FICTIONAL STRATEGY SIM // NO REAL-WORLD TARGETS</span><button id="resetGame" class="text-button">Reset career</button></footer>
+
+    <footer>
+      <span>FICTIONAL CITY SIM // BALLINCOLLIG, CORK</span>
+      <button id="resetGame" class="text-button">Reset career</button>
+    </footer>
   </div>
+
   <script src="app.js"></script>
 </body>
 </html>
