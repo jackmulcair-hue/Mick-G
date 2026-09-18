@@ -47,6 +47,15 @@
 
       <div id="toast" class="toast" role="status"></div>
 
+      <div id="cutsceneOverlay" class="cutscene-overlay hidden" aria-live="polite">
+        <div class="cutscene-card">
+          <span class="eyebrow" id="cutsceneTag">CITY VOICE</span>
+          <h2 id="cutsceneTitle">Foothold secured</h2>
+          <div id="cutsceneLines" class="cutscene-lines"></div>
+          <button class="button" id="cutsceneClose">Keep moving</button>
+        </div>
+      </div>
+
       <nav class="tabs" aria-label="Game areas">
         <button class="tab active" data-view="street">Street</button>
         <button class="tab" data-view="jobs">Jobs <b id="jobBadge">3</b></button>
@@ -80,13 +89,13 @@
 
       <section id="range" class="view">
         <div class="section-heading">
-          <div><span class="eyebrow">TRAINING FACILITY</span><h2>Precision range</h2></div>
+          <div><span class="eyebrow">TRAINING FACILITY</span><h2>Gang firefight range</h2></div>
           <span class="pill" id="ammoLabel">AMMO 6/6</span>
         </div>
 
         <div class="panel range-panel">
           <div class="range-topbar">
-            <span id="roundLabel">ROUND 1 / 5</span>
+            <span id="roundLabel">ROUND 1</span>
             <span id="accuracyLabel">ACCURACY 0%</span>
           </div>
 
@@ -94,9 +103,12 @@
 
           <div id="rangeStage" class="range-stage" aria-label="Range firing area">
             <div class="range-scan"></div>
-            <div id="target" class="target"><i></i><span id="targetLabel">TARGET</span></div>
+            <div id="target" class="target runner"><i></i><span id="targetLabel">RUNNER</span></div>
             <div id="hitMarker" class="hit-marker">+10</div>
           </div>
+
+          <div class="range-objective" id="rangeObjective">Clear the gang lane and hold the block.</div>
+          <div class="progress foothold-progress"><i id="footholdFill"></i></div>
 
           <div class="range-controls">
             <button class="button" id="fireButton">Take the shot</button>
@@ -107,6 +119,7 @@
           <div class="range-stats">
             <span>Score <b id="rangeScore">0</b></span>
             <span>Streak <b id="rangeStreak">0</b></span>
+            <span>Foothold <b id="rangeFoothold">0%</b></span>
             <span>Best <b id="rangeBest">0</b></span>
           </div>
         </div>
